@@ -6,7 +6,7 @@
 3.X.X  :  http://localhost:8080/swagger-ui/index.html
 ````
 ### 라이브러리 추가
-```` yml
+```` java
 ....
 dependencies {
     ....
