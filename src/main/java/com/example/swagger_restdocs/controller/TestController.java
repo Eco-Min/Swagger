@@ -1,9 +1,9 @@
 package com.example.swagger_restdocs.controller;
 
+import com.example.swagger_restdocs.service.TestUserService;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -11,6 +11,9 @@ import java.util.Map;
 
 @RestController
 public class TestController {
+
+    @Autowired
+    private TestUserService userService;
 
     @ApiOperation(value = "user", notes = "user 정보")
     @GetMapping(value = "/user")
@@ -21,6 +24,11 @@ public class TestController {
         userDto.setStatus(true);
         userDto.setCreateAt(LocalDateTime.now());
         return userDto;
+    }
+
+    @PostMapping(value = "/user")
+    public UserDto helloUser(@RequestBody UserDto userDto){
+        return userService.createUserDto(userDto);
     }
 
 
@@ -37,5 +45,10 @@ public class TestController {
         result.put(no, "테스트");
         result.put("test contents", "테스트 내용");
         return  result;
+    }
+
+    @GetMapping(value = "/userInformation/{id}")
+    public UserDto userInformation(@PathVariable Integer id){
+        return userService.findUserDto(id);
     }
 }
