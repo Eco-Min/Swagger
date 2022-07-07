@@ -1,11 +1,11 @@
-package com.example.swagger_restdocs.controller;
+package com.example.swagger_restdocs.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class UserDto {
+public class TestDto {
     @ApiModelProperty(example = "유저 아이디")
     private Integer id;
     @ApiModelProperty(example = "유저 이름")

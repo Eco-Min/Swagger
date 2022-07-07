@@ -1,5 +1,6 @@
 package com.example.swagger_restdocs.controller;
 
+import com.example.swagger_restdocs.dto.TestDto;
 import com.example.swagger_restdocs.service.TestUserService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +18,18 @@ public class TestController {
 
     @ApiOperation(value = "user", notes = "user 정보")
     @GetMapping(value = "/user")
-    public UserDto helloUser(){
-        UserDto userDto = new UserDto();
-        userDto.setId(5);
-        userDto.setName("hello");
-        userDto.setStatus(true);
-        userDto.setCreateAt(LocalDateTime.now());
-        return userDto;
+    public TestDto helloUser(){
+        TestDto testDto = new TestDto();
+        testDto.setId(5);
+        testDto.setName("hello");
+        testDto.setStatus(true);
+        testDto.setCreateAt(LocalDateTime.now());
+        return testDto;
     }
 
     @PostMapping(value = "/user")
-    public UserDto helloUser(@RequestBody UserDto userDto){
-        return userService.createUserDto(userDto);
+    public TestDto helloUser(@RequestBody TestDto testDto){
+        return userService.createUserDto(testDto);
     }
 
 
@@ -48,7 +49,7 @@ public class TestController {
     }
 
     @GetMapping(value = "/userInformation/{id}")
-    public UserDto userInformation(@PathVariable Integer id){
+    public TestDto userInformation(@PathVariable Integer id){
         return userService.findUserDto(id);
     }
 }
